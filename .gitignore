@@ -1,0 +1,9 @@
+# Ignore macOS system files
+.DS_Store
+
+# Ignore everything inside java8 folder
+java8/
+
+# Or, ignore just compiled classes or specific file types
+*.class
+*.log
