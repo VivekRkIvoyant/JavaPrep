@@ -7,3 +7,6 @@ java8/
 # Or, ignore just compiled classes or specific file types
 *.class
 *.log
+# IntelliJ IDEA files
+.idea/
+*.iml
