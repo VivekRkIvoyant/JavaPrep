@@ -1,5 +1,6 @@
 package Week4.singleton;
 
+import java.io.*;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
@@ -10,7 +11,7 @@ public class Main extends Thread{
         System.out.println(connection.hashCode());
     }
 
-    public static void main(String[] args) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+    public static void main(String[] args) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, IOException, ClassNotFoundException {
 
 //        DatabaseConnection db = new DatabaseConnection();
 //        Cannot create multiple objects as the constructor is private
@@ -42,6 +43,18 @@ public class Main extends Thread{
         constructor.setAccessible(true);
         DatabaseConnection databaseConnection = constructor.newInstance();
         System.out.println(databaseConnection.hashCode());
+
+
+//        Serilization and Deserilization Approach
+        DatabaseConnection con = DatabaseConnection.getInstance();
+        ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("home.ob"));
+        outputStream.writeObject(con);
+
+        System.out.println("serilization done...");
+
+        ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("home.ob"));
+        DatabaseConnection d2 = (DatabaseConnection) inputStream.readObject();
+        System.out.println(d2.hashCode());
     }
 }
 

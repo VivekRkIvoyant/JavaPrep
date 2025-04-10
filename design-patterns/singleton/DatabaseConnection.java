@@ -1,6 +1,8 @@
 package Week4.singleton;
 
-public class DatabaseConnection extends Thread{
+import java.io.Serializable;
+
+public class DatabaseConnection extends Thread {
 
     /*
     * 1.Make the constructor private
